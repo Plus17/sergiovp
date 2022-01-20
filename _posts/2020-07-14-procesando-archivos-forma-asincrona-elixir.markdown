@@ -52,10 +52,10 @@ def start(_type, _args) do
       # Start the Ecto repository
       App.Repo,
       # Start the PubSub system
-      {Phoenix.PubSub, name: Credito.PubSub},
+      {Phoenix.PubSub, name: App.PubSub},
       # Start the endpoint when the application starts
       AppWeb.Endpoint,
-      {Task.Supervisor, name: Credito.TaskSupervisor},
+      {Task.Supervisor, name: App.TaskSupervisor},
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
