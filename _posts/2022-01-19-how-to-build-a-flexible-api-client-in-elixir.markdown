@@ -4,16 +4,15 @@ title:  "How to build a flexible API client in Elixir"
 categories: elixir
 ---
 
-Normally, to talk with an external API we will search some library to do the work for us.
+Normally, to talk with an external API we will search some library to do the work for us. Sometimes, this search is infructuous for some of the next reasons:
 
-Sometimes, this search is infructuous for some of the next reasons:
-Exist one or more libraries but are unmaintained.
-There is no library at all.
-Existing libraries do not fit our requirements.
+- Exist one or more libraries but are unmaintained.
+- There is no library at all.
+- Existing libraries do not fit our requirements.
 
-At this point, you could take the following paths:
+At this point, you could take the following paths.
 
-## Build a service module in your app
+## 1 Build a service module in your app
 Maybe you just need to consume some endpoints and already use some HTTP client like Tesla. In this case, you can use the usual path:
 
 ```elixir
@@ -30,11 +29,11 @@ defmodule GitHub do
 end
 ```
 
-## Build a custom API client
+## 2 Build a custom API client
 
-Sometimes you want/need to do it yourself in a library way :). In this case you can follow the pattern talked in the [Goth redesign](https://dashbit.co/blog/goth-redesign).
+Sometimes you want/need to do it yourself in a library way :). In this case you can follow the pattern mentioned in the [Goth redesign](https://dashbit.co/blog/goth-redesign).
 
-Use an HTTP client contract:
+### Use an HTTP client contract:
 Using behaviours you can define a contract for the HTTP client. With this contract you can implement the contract and use the HTTP client library that you want:
 
 ```elixir
@@ -84,19 +83,24 @@ defmodule API.HTTPClient.Hackney do
 end
 ```
 
-## Using the HTTP client
+Then you can set this as default in the api client config:
+```elixir
+config :api, http_client: API.HTTPClient.Hackney
+```
+
+### Using the HTTP client
 
 ```elixir
 defmodule API.Resource do
 
   def get_resource() do
-    url = "https://#{Application.fetch_env!(:base_url)}/api/<resource>"
+    url = "https://#{Application.fetch_env!(:api, :base_url)}/api/<resource>"
 
     headers = build_headers()
 
     result =
-      :http_client
-      |> Application.fetch_env!()
+      :api
+      |> Application.fetch_env!(:http_client)
       |> HTTPClient.request(:get, url, headers, "", [])
       |> handle_response()
 
@@ -129,7 +133,7 @@ defmodule API.Resource do
 end
 ```
 
-## Custom implementation
+### Custom implementation
 
 If you don't use hackney and you use another client like Finch or Mint instead, you can implement the contract yourself:
 
@@ -147,15 +151,17 @@ defmodule MyApp.Extensions.API.FinchClient do
 end
 ```
 
-Then you can use the new implementation in your config:
+Then you can use the new implementation in your app config:
 
 ```elixir
-config :api, http_client: MyApp.Extensions.API.FinchClient
+config :api,
+  http_client: MyApp.Extensions.API.FinchClient,
+  base_url: "..."
 ```
 
 
 
-## Advantages:
+### Advantages:
 
 You can make the default http client dependency optional in your API client: `{:hackney, "~> 1.7", optional: true}`
 
@@ -164,6 +170,8 @@ Who use the API client can pick their HTTP client, exists a lot of options to ch
 Avoid duplication of dependencies. If you're already using hackney great! But if you are already using another client, you are not forced to download and use Hackney additionally.
 
 Who use the API client can use the http client contract to test inside their app using [Mox](https://github.com/dashbitco/mox). More about this in: [Mocks and explicit contracts](http://blog.plataformatec.com.br/2015/10/mocks-and-explicit-contracts/)
+
+Share code between the organization projects. Preventing writing the same functionality multiple times
 
 
 Finally, you can see another example in the Tesla library:
