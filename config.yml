@@ -1,0 +1,62 @@
+baseURL: https://sergiovp.dev/
+languageCode: en-us
+title: Sergio Valente
+paginate: 5
+theme: "PaperMod"
+permalinks:
+  posts: /blog/:title/
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+params:
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  title: Sergio Valente
+  description: "Software engineer. Elixir, Phoenix and Fintech/Proptech"
+  keywords: [Blog, Elixir]
+  author: Me
+  images: ["<link or path of image for opengraph, twitter-cards>"]
+  DateFormat: "January 2, 2006"
+  defaultTheme: dark # dark, light
+  disableThemeToggle: false
+
+  ShowReadingTime: false
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: false
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: false
+  hidemeta: false
+  hideSummary: false
+  showtoc: false
+  tocopen: false
+
+
+   # home-info mode
+  homeInfoParams:
+    Title: "\U0001F44B"
+    Content:  Software Engineer currently working with Elixir.
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/plus17"
+
+
+menu:
+  main:
+    - identifier: categories
+      name: categories
+      url: /categories/
+      weight: 10
+    - identifier: TIL
+      name: til
+      url: https://til.sergiovp.dev/
+      weight: 20
