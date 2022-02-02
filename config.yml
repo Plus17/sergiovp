@@ -52,11 +52,11 @@ params:
 
 menu:
   main:
-    - identifier: categories
-      name: categories
-      url: /categories/
-      weight: 10
     - identifier: TIL
-      name: til
+      name: TIL
       url: https://til.sergiovp.dev/
+      weight: 10
+    - identifier: categories
+      name: Categories
+      url: /categories/
       weight: 20
