@@ -1,6 +1,6 @@
 ---
 author: Me
-title: Procesando archivos de forma asíncrona con Elixir/Phoenix
+title: Procesando archivos de forma asíncrona con Elixir
 date: 2020-07-14
 description: Como cargar y procesar archivos en segundo plano con Elixir/Phoenix
 math: true
