@@ -1,8 +1,11 @@
 ---
 author: Me
-title: Proteger el SSH con Latchcomunicaciones
+title: Proteger el SSH con Latch
 date: 2015-04-23
-description: Proteger el SSH con Latchcomunicaciones
+alias: "proteger-ssh-latch"
+aliases:
+    - /blog/proteger-ssh-latch/
+description: Proteger el SSH con Latch
 math: true
 categories: ["security"]
 ---
