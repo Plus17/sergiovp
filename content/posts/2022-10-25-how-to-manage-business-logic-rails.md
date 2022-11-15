@@ -22,7 +22,7 @@ You would usually see this logic in the model & controller:
 
 A common approach to handle this is to encapsulate the business logic in a specific class, this pattern has several names like class services, handlers, interactors, etc.
 
-Another important thing to leverage this pattern is to take advantage of solid principles like single responsibility. Having multiple specific purpose classes that our service classes can use like query objects, mailers, jobs, etc.
+Another important thing to leverage this pattern is to take advantage of solid principles like single responsibility. Having multiple specific purpose classes that our service classes can use like query objects, mailers, jobs, POROs, etc.
 
 I take this one from [Sustainable Web Development with Ruby on Rails](https://sustainable-rails.com/) book:
 
