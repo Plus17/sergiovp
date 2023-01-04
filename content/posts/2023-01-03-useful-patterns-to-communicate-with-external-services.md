@@ -6,7 +6,7 @@ description: Some patterns to handle external requests
 math: true
 categories: []
 ---
-useful-patterns-to-communicate-with-external-services
+
 Communicating with external services like a third-party API REST is hard, not only because the contract is designed by someone else. Also, now you need to consider the Fallacies of Distributed Systems.
 
 Calls to external services can fail for multiple reasons unrelated to business concerns. You can receive a timeout error, the network can fail, bandwith related errors, etc.
