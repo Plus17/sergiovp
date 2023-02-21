@@ -34,7 +34,7 @@ defmodule MyBroadway do
 
   require Logger
 
-  @chunk_size 20
+  @chunk_size 10
 
   def start_link(_opts) do
     options = [
