@@ -101,13 +101,13 @@ defmodule DBDummyProducer do
     {:producer, opts}
   end
 
-  def start_link(number) do
-    GenStage.start_link(__MODULE__, number)
+  def start_link(opts) do
+    GenStage.start_link(__MODULE__, opts)
   end
 
   @impl true
   @spec handle_demand(integer, any) :: {:noreply, list, any}
-  def handle_demand(demand, opts) do
+  def handle_demand(demand, state) do
     Logger.debug(fn ->
       "[DBProducer] handling demand: #{demand}"
     end)
@@ -120,7 +120,7 @@ defmodule DBDummyProducer do
         }
       end)
 
-    {:noreply, events, opts}
+    {:noreply, events, state}
   end
 end
 
@@ -158,7 +158,7 @@ def start_link(_opts) do
 ```
 
 ```elixir
-def transform(event, _opts) do
+def transform(event, _state) do
     Logger.debug("[MyBroadway] transforming event: #{inspect(event)}")
 
     %Broadway.Message{
@@ -236,7 +236,7 @@ defmodule MyBroadway do
     Broadway.start_link(__MODULE__, options)
   end
 
-  def transform(event, _opts) do
+  def transform(event, _state) do
     Logger.debug("[MyBroadway] transforming event: #{inspect(event)}")
 
     %Broadway.Message{
@@ -284,12 +284,12 @@ defmodule DBDummyProducer do
     {:producer, opts}
   end
 
-  def start_link(number) do
-    GenStage.start_link(__MODULE__, number)
+  def start_link(opts) do
+    GenStage.start_link(__MODULE__, opts)
   end
 
   @impl true
-  def handle_demand(demand, opts) do
+  def handle_demand(demand, state) do
     Logger.debug(fn ->
       "[DBDummyProducer] handling demand: #{demand}"
     end)
@@ -302,7 +302,7 @@ defmodule DBDummyProducer do
         }
       end)
 
-    {:noreply, events, opts}
+    {:noreply, events, state}
   end
 end
 
