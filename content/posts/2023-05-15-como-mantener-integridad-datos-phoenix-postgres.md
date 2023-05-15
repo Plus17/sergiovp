@@ -5,6 +5,8 @@ date: 2023-04-18
 description: Como implementar funcionalidades de postgres con Phoenix para un correcto diseño de la base de datos
 math: true
 categories: ["postgres", "elixir", "web"]
+ShowToc: true
+TocOpen: true
 ---
 
 Una de las formas más comunes de almacenar datos en software es utilizando bases de datos relaciones. Aún y con el surgimiento de propuestas como las bases de datos NoSQL, el modelo relacional sigue estando presente porque es útil para la mayoría de los casos.
