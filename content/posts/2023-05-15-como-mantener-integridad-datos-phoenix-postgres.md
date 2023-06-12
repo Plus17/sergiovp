@@ -1,9 +1,8 @@
 ---
 author: Me
 title: Como mantener integridad de los datos con Elixir Phoenix y Postgres
-date: 2023-04-18
+date: 2023-05-15
 description: Como implementar funcionalidades de postgres con Phoenix para un correcto diseño de la base de datos
-math: true
 categories: ["postgres", "elixir", "web"]
 ShowToc: true
 TocOpen: true
