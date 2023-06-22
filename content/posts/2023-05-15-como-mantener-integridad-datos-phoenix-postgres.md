@@ -170,9 +170,6 @@ defmodule MyApp.Repo.Migrations.CreateWithdrawals do
   end
 end
 ```
-
-De esta forma nos aseguramos que todos los artículos tengan la referencia a su respectivo vendedor.
-
 ## Valores por defecto
 
 En algunos casos como los [campos booleanos es buena práctica definir un valor por defecto](https://sergiovp.dev/blog/siempre-asigna-un-valor-por-defecto-a-los-campos-booleanos/).  En el caso del campo `active` en la tabla `accounts`, los generadores de Phoenix agregaron dos restricciones al definir el campo como booleano.
@@ -381,11 +378,11 @@ defmodule MyApp.Repo.Migrations.CreateWithdrawals do
 
   def down do
 	  execute """
-    DROP TRIGGER refund_amount_validation IF EXISTS ON withdrawals;
+    DROP TRIGGER withdrawal_amount_validation IF EXISTS ON withdrawals;
     """
 
     execute """
-    DROP FUNCTION validate_refund_amount_refunded();
+    DROP FUNCTION validate_withdrawal_amount();
     """
 
     drop constraint("withdrawals", "amount_must_be_positive")
