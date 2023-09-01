@@ -1,5 +1,5 @@
 baseURL: https://sergiovp.dev/
-languageCode: en-us
+languageCode: es
 title: Sergio Valente
 paginate: 5
 theme: "PaperMod"
@@ -15,11 +15,20 @@ minify:
   disableXML: true
   minifyOutput: true
 
+DefaultContentLanguage: es
+languages:
+  es:
+    languageName: Spanish
+    weight: 1
+  en:
+    languageName: English
+    weight: 2
+
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  title: Sergio Valente
+  title: Blog - Sergio Valente
   description: "Software engineer. Elixir, Phoenix and Fintech/Proptech"
-  keywords: [Blog, Elixir]
+  keywords: [Blog, Elixir, Programing, Ruby, Phoenix, Rails]
   author: Me
   images: ["<link or path of image for opengraph, twitter-cards>"]
   DateFormat: "January 2, 2006"
@@ -37,20 +46,19 @@ params:
   hidemeta: false
   hideSummary: false
   showtoc: false
-  tocopen: false
+  tocopen:
+    false
 
-
-   # home-info mode
+    # home-info mode
   homeInfoParams:
     Title: "\U0001F44B"
-    Content:  Software Engineer currently working with Elixir.
+    Content: Software Engineer currently working with Elixir.
 
   socialIcons:
     - name: github
       url: "https://github.com/plus17"
     - name: linkedin
       url: "https://linkedin.com/in/sergiovp/"
-
 
 menu:
   main:
